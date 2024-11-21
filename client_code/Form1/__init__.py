@@ -32,12 +32,22 @@ class Form1(Form1Template):
     for data in roster_data:
       self.rosters[data['roster_id']] = data
 
-    matchup_map = []
+    matchup_map = {}
     for match_up in match_up_data:
-      matchup_map.append(
-        {
-        'team':self.users[self.rosters[match_up['roster_id']]['owner_id']]['metadata']['team_name'],
+      user_id = self.rosters[match_up['roster_id']]['owner_id']
+      avatar = anvil.http.request(f"https://sleepercdn.com/avatars/thumbs/{self.users[user_id]['avatar']}")
+      team = {
+        'team':self.users[user_id]['metadata']['team_name'],
         'matchup':match_up['matchup_id'],
+        'avatar':avatar
         }
-      )
-    self.repeating_panel_1.items = matchup_map
+      if matchup_map.get(match_up['matchup_id']):
+        map_key = 'away'  
+      else:
+        matchup_map[match_up['matchup_id']] = {}
+        map_key = 'home'
+      matchup_map[match_up['matchup_id']][map_key] = team
+        
+
+    
+    self.repeating_panel_1.items = list(matchup_map.values())

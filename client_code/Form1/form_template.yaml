@@ -21,8 +21,8 @@ components_by_slot:
     name: data_grid_1
     properties:
       columns:
-      - {data_key: team, id: RDWMMW, title: Team}
-      - {data_key: matchup, id: LUVEGV, title: matchup}
+      - {data_key: team, id: RDWMMW, title: Home}
+      - {data_key: matchup, id: LUVEGV, title: Away}
     type: DataGrid
 is_package: true
 layout: {type: 'form:dep_lin1x4oec0ytd:Layouts.NavigationRailLayout'}

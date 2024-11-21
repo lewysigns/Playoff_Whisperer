@@ -1,3 +1,37 @@
-components: []
+components:
+- components:
+  - data_bindings:
+    - {code: 'self.item[''home''][''team'']', property: text, writeback: false}
+    layout_properties: {grid_position: 'AGIHAK,CHIORC'}
+    name: text_name
+    properties: {align: center}
+    type: form:dep_lin1x4oec0ytd:_Components.Text
+  - data_bindings:
+    - {code: 'self.item[''home''][''avatar'']', property: source, writeback: false}
+    layout_properties: {grid_position: 'YYUJGI,JJYVXC'}
+    name: image_1
+    properties: {height: 66.763671875}
+    type: Image
+  layout_properties: {column: RDWMMW}
+  name: column_panel_1
+  properties: {}
+  type: ColumnPanel
+- components:
+  - data_bindings:
+    - {code: 'self.item[''away''][''team'']', property: text, writeback: false}
+    layout_properties: {grid_position: 'AGIHAK,CHIORC'}
+    name: text_name_copy
+    properties: {align: center}
+    type: form:dep_lin1x4oec0ytd:_Components.Text
+  - data_bindings:
+    - {code: 'self.item[''away''][''avatar'']', property: source, writeback: false}
+    layout_properties: {grid_position: 'YYUJGI,JJYVXC'}
+    name: image_1_copy
+    properties: {height: 65.009765625}
+    type: Image
+  layout_properties: {column: LUVEGV}
+  name: column_panel_1_copy
+  properties: {}
+  type: ColumnPanel
 container: {type: DataRowPanel}
 is_package: true
