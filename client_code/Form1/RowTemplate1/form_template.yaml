@@ -13,8 +13,10 @@ components:
     properties: {height: 66.763671875}
     type: Image
   layout_properties: {column: RDWMMW}
-  name: column_panel_1
-  properties: {}
+  name: column_panel_home
+  properties:
+    spacing:
+      padding: ['5', '5', '5', '5']
   type: ColumnPanel
 - components:
   - data_bindings:
@@ -30,8 +32,10 @@ components:
     properties: {height: 65.009765625}
     type: Image
   layout_properties: {column: LUVEGV}
-  name: column_panel_1_copy
-  properties: {}
+  name: column_panel_away
+  properties:
+    spacing:
+      padding: ['5', '5', '5', '5']
   type: ColumnPanel
 container: {type: DataRowPanel}
 is_package: true

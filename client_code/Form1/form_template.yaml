@@ -23,6 +23,7 @@ components_by_slot:
       columns:
       - {data_key: team, id: RDWMMW, title: Home}
       - {data_key: matchup, id: LUVEGV, title: Away}
+      show_page_controls: false
     type: DataGrid
 is_package: true
 layout: {type: 'form:dep_lin1x4oec0ytd:Layouts.NavigationRailLayout'}
