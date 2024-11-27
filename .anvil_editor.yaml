@@ -5,6 +5,6 @@ unique_ids:
     Form1: '1732112786766281781613052.48303'
     Form1.RowTemplate1: '1732112868607751818647558.3215'
   modules:
-    Form1.wizard: '1732735998329586869214231.3357'
+    wizard: '1732735998329586869214231.3357'
   scripts: {}
   server_modules: {}
