@@ -1,8 +1,7 @@
 from ._anvil_designer import Form1Template
 from anvil import *
 
-import anvil.http
-
+from .wizard import get_odds
 
 class Form1(Form1Template):
   def __init__(self, **properties):
@@ -16,38 +15,11 @@ class Form1(Form1Template):
 
   def button_run_click(self, **event_args):
     """This method is called when the component is clicked."""
+    current_week = 12
+    final_week = 14
     if not self.text_box_league_id.text:
       alert("Need to enter your league id first!")
       return
 
-    match_up_data = anvil.http.request(f"https://api.sleeper.app/v1/league/{self.text_box_league_id.text}/matchups/11",json=True)
-    users_data = anvil.http.request(f"https://api.sleeper.app/v1/league/{self.text_box_league_id.text}/users",json=True)
-    roster_data = anvil.http.request(f"https://api.sleeper.app/v1/league/{self.text_box_league_id.text}/rosters",json=True)
-    # for data in match_up_data:
-    #   self.match_ups[data['matchup_id']] = data
+    get_odds(self.text_box_league_id.text,current_week,final_week)
     
-    for data in users_data:
-      self.users[data['user_id']] = data
-      
-    for data in roster_data:
-      self.rosters[data['roster_id']] = data
-
-    matchup_map = {}
-    for match_up in match_up_data:
-      user_id = self.rosters[match_up['roster_id']]['owner_id']
-      avatar = anvil.http.request(f"https://sleepercdn.com/avatars/thumbs/{self.users[user_id]['avatar']}")
-      team = {
-        'team':self.users[user_id]['metadata']['team_name'],
-        'matchup':match_up['matchup_id'],
-        'avatar':avatar
-        }
-      if matchup_map.get(match_up['matchup_id']):
-        map_key = 'away'  
-      else:
-        matchup_map[match_up['matchup_id']] = {}
-        map_key = 'home'
-      matchup_map[match_up['matchup_id']][map_key] = team
-        
-
-    
-    self.repeating_panel_1.items = list(matchup_map.values())
